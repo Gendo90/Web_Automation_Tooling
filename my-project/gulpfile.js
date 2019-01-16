@@ -1,0 +1,23 @@
+//function defaultTask(cb) {
+  // place code for your default task here
+//  cb();
+//}
+
+//exports.default = defaultTask
+
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+//var print = require('gulp-print').default; #Unnecessary for the styles task...
+
+gulp.task("default", function defaultTask(cb) {
+  console.log("Testing, 1, 2, 3!");
+  cb();
+});
+
+gulp.task("styles", async function() {
+  gulp.src('/sass/**/*.scss')
+      .pipe(sass())
+      .on("error", sass.logError)
+      .pipe( gulp.dest('./css/') );
+  console.log("SASS has updated the CSS!")
+});
