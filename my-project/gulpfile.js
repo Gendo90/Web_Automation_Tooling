@@ -7,6 +7,7 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer')
 //var print = require('gulp-print').default; #Unnecessary for the styles task...
 
 gulp.task("default", function defaultTask(cb) {
@@ -15,9 +16,14 @@ gulp.task("default", function defaultTask(cb) {
 });
 
 gulp.task("styles", async function() {
-  gulp.src('/sass/**/*.scss')
+  gulp.src('./sass/**/*.scss')
       .pipe(sass())
       .on("error", sass.logError)
-      .pipe( gulp.dest('./css/') );
+      .pipe(
+        autoprefixer({
+          browsers:["last 2 versions"]
+        })
+      )
+      .pipe( gulp.dest('./css') );
   console.log("SASS has updated the CSS!")
 });

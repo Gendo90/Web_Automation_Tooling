@@ -63,20 +63,23 @@ figcaption {
   width: 50%;
   height: 50vh;
   margin-left: 25%;
-  object-fit: cover; }
+  -o-object-fit: cover;
+     object-fit: cover; }
 
 .artpic_sketch {
   width: 300px;
   height: 530px;
   margin-left: 25%;
-  object-fit: cover; }
+  -o-object-fit: cover;
+     object-fit: cover; }
 
 .bustpic {
   width: 40%;
   height: 50vh;
   padding: 5%;
   padding-top: 5px;
-  object-fit: cover; }
+  -o-object-fit: cover;
+     object-fit: cover; }
 
 .DA_prototype {
   width: 40%;
@@ -85,7 +88,8 @@ figcaption {
   max-width: 340px;
   padding: 5%;
   padding-top: 5px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   justify-self: center; }
 
 /*.DA_prototype2 {
@@ -171,12 +175,14 @@ a {
 .mainpic {
   width: 60%;
   height: 80%;
-  object-fit: cover; }
+  -o-object-fit: cover;
+     object-fit: cover; }
 
 .phoenix_mainpic {
   width: 80%;
   height: 80%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   padding-top: 20px;
   padding-bottom: 20px; }
 
@@ -216,28 +222,49 @@ a {
   background-color: #484848; }
 
 .flex-box, .flex-box_DA {
-  display: -webkit-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   padding: 10px; }
 
 .flex-box_DA {
-  justify-content: center; }
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
 
 .flex-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   padding: 10px; }
 
 .flex-list-foods {
-  display: -webkit-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: left;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
   max-width: 1000px; }
 
 .center-content {
