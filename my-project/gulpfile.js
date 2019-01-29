@@ -13,6 +13,7 @@ var eslint = require('gulp-eslint');
 var jasmineBrowser = require('gulp-jasmine-browser');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var babel = require('gulp-babel');
 //var print = require('gulp-print').default; #Unnecessary for the styles task...
 
 //Former default function - for testing purposes!
@@ -55,6 +56,7 @@ gulp.task("styles", async function() {
 
 gulp.task('scripts', function() {
   gulp.src('./js/**/*.js')
+      .pipe(babel())
       .pipe(concat('all.js'))
       .pipe(gulp.dest('dist/js'));
 })
@@ -63,6 +65,7 @@ gulp.task('scripts', function() {
 //Concatenates and minifies JavaScript code into one file, all.js
 gulp.task('scripts-dist', function() {
   gulp.src('./js/**/*.js')
+      .pipe(babel())
       .pipe(concat('all.js'))
       .pipe(uglify())
       .pipe(gulp.dest('dist/js'))
