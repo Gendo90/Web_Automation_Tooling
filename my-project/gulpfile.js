@@ -44,6 +44,7 @@ gulp.task("styles", async function() {
           browsers:["last 2 versions"]
         })
       )
+      .pipe(sass({outputStyle: 'compressed'}))
       .pipe( gulp.dest('./dist/css') )
       .pipe(browserSync.stream());
   console.log("SASS has updated the CSS!")
