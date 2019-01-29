@@ -20,12 +20,18 @@ var jasmineBrowser = require('gulp-jasmine-browser');
 });*/
 
 browserSync.init({
-  server: "./"
+  server: "./dist"
 });
+
+gulp.task('run_maintenance', async function(){
+  gulp.series('copy-html', 'copy-img', 'styles', 'lint');
+})
 
 gulp.task("default", function() {
   gulp.watch('./sass/**/*.scss', gulp.series('styles'));
   gulp.watch('js/**/*.js', gulp.series('lint'));
+  gulp.watch('./index.html', gulp.series('copy-html'));
+  gulp.watch('./img', gulp.series('copy-img'));
 });
 
 
@@ -38,10 +44,24 @@ gulp.task("styles", async function() {
           browsers:["last 2 versions"]
         })
       )
-      .pipe( gulp.dest('./css') )
+      .pipe( gulp.dest('./dist/css') )
       .pipe(browserSync.stream());
   console.log("SASS has updated the CSS!")
 });
+
+// Copies the existing html file into the project's "working" directory
+gulp.task('copy-html', async function() {
+  gulp.src('./index.html')
+      .pipe(gulp.dest('./dist'));
+  console.log("Gulp has updated the index.html file!")
+})
+
+
+gulp.task('copy-img', async function() {
+  gulp.src('./img/*')
+      .pipe(gulp.dest('./dist/img'));
+      console.log("Gulp has updated the images folder!")
+})
 
 
 gulp.task('lint', async function() {
