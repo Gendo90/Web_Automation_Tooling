@@ -25,9 +25,9 @@ browserSync.init({
   server: "./dist"
 });
 
-gulp.task('run_maintenance', async function(){
-  gulp.series('copy-html', 'copy-img', 'styles', 'lint');
-})
+gulp.task('dist', async function(){
+  gulp.series('copy-html', 'copy-img', 'styles', 'lint', 'scripts-dist')}
+);
 
 gulp.task("default", function() {
   gulp.watch('./sass/**/*.scss', gulp.series('styles'));
