@@ -11,6 +11,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 var eslint = require('gulp-eslint');
 var jasmineBrowser = require('gulp-jasmine-browser');
+var concat = require('gulp-concat');
 //var print = require('gulp-print').default; #Unnecessary for the styles task...
 
 //Former default function - for testing purposes!
@@ -49,6 +50,21 @@ gulp.task("styles", async function() {
       .pipe(browserSync.stream());
   console.log("SASS has updated the CSS!")
 });
+
+
+gulp.task('scripts', function() {
+  gulp.src('./js/**/*.js')
+      .pipe(concat('all.js'))
+      .pipe(gulp.dest('dist/js'));
+})
+
+
+gulp.task('scripts-dist', function() {
+  gulp.src('./js/**/*.js')
+      .pipe(concat('all.js'))
+      .pipe(gulp.dest('dist/js'))
+})
+
 
 // Copies the existing html file into the project's "working" directory
 gulp.task('copy-html', async function() {
