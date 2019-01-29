@@ -52,7 +52,10 @@ gulp.task("styles", async function() {
 // Copies the existing html file into the project's "working" directory
 gulp.task('copy-html', async function() {
   gulp.src('./index.html')
-      .pipe(gulp.dest('./dist'));
+      .pipe(gulp.dest('./dist'))
+      .pipe(browserSync.reload({
+        stream: true
+      }));
   console.log("Gulp has updated the index.html file!")
 })
 
