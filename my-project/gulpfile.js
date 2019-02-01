@@ -15,6 +15,8 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var babel = require('gulp-babel');
 var sourcemaps = require('gulp-sourcemaps');
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
 //var print = require('gulp-print').default; #Unnecessary for the styles task...
 
 //Former default function - for testing purposes!
@@ -91,8 +93,13 @@ gulp.task('copy-html', async function() {
 
 gulp.task('copy-img', async function() {
   gulp.src('./img/*')
+      .pipe(imagemin({
+            progressive: true,
+            use: [pngquant()]
+        }))
       .pipe(gulp.dest('./dist/img'));
-      console.log("Gulp has updated the images folder!")
+      console.log('Images compressed!')
+      console.log("Gulp has finished updating the images folder!")
 })
 
 
